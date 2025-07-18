@@ -14,7 +14,7 @@ PAYMENT_TEXT = (
     "📌 *Payment Instructions*\n\n"
     "To complete your purchase:\n\n"
     "- Send ₹99 to UPI: `pay9570@airtel`\n"
-    "- Share the payment screenshot via Telegram: @PeruHACKER\n\n"
+    "- Then send a screenshot here: @PeruHACKER\n\n"
     "Our team will confirm and activate your subscription."
 )
 
@@ -42,7 +42,7 @@ def main():
             if 'message' in update and update['message']['text'] == '/start':
                 chat_id = update['message']['chat']['id']
                 send_message(chat_id, WELCOME_TEXT, [
-                    [{'text': '💳 Pay ₹99 Now', 'callback_data': 'pay_now'}]
+                    [{'text': '💳 Get Gemini Pro Now', 'callback_data': 'pay_now'}]
                 ])
             elif 'callback_query' in update and update['callback_query']['data'] == 'pay_now':
                 chat_id = update['callback_query']['message']['chat']['id']
