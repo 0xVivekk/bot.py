@@ -24,6 +24,11 @@ GIVEAWAY_TEXT = (
     "Good luck!"
 )
 
+CRYPTO_TEXT = (
+    "💸 *Pay by Crypto*\n\n"
+    "Contact here: @PeruHACKER to make payment using crypto (USDT, BTC, etc.)"
+)
+
 def send_message(chat_id, text, buttons=None):
     payload = {
         'chat_id': chat_id,
@@ -66,7 +71,11 @@ def main():
                 user = update['callback_query']['from']
 
                 if data == 'pay_now':
-                    send_message(chat_id, PAYMENT_TEXT)
+                    send_message(chat_id, PAYMENT_TEXT, [
+                        [{'text': '💰 Pay by Crypto', 'callback_data': 'crypto_pay'}]
+                    ])
+                elif data == 'crypto_pay':
+                    send_message(chat_id, CRYPTO_TEXT)
                 elif data == 'join_giveaway':
                     send_message(chat_id, GIVEAWAY_TEXT, [
                         [{'text': '✅ Enter Giveaway', 'callback_data': 'enter_giveaway'}]
